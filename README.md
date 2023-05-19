@@ -1,6 +1,6 @@
 # Check for an active listening port
 
-This script makes it easy to check if a port is currently listening on your computer. 
+This script makes it easy to check if a port is actively listening or in use. 
 
 # Installing
 
