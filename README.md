@@ -1,3 +1,5 @@
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W64WAXN)
+
 # Check for an active listening port
 
 This script makes it easy to check if a port is actively listening or in use. 
