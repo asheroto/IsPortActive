@@ -42,13 +42,8 @@ IsPortActive [-Port <int>] [-ProcessName <string>] [-ProcessId <int>] [-Version]
 
 ## Examples
 
-```plaintext
-# Check if port 443 is active
-IsPortActive -Port 443
-
-# Check if port 80 is active using process name
-IsPortActive -ProcessName "httpd"
-
-# Check if port 8080 is active using process ID
-IsPortActive -ProcessId 1234
-```
+| Description | Command |
+| --- | --- |
+| Check if port 443 is active | `IsPortActive -Port 443` |
+| Check if port 80 is active using process name | `IsPortActive -ProcessName "httpd"` |
+| Check if port 8080 is active using process ID | `IsPortActive -ProcessId 1234` |
