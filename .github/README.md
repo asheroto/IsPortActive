@@ -45,5 +45,5 @@ Only one of the following parameters can be used at a time.
 | Description | Command |
 | --- | --- |
 | Check if port 443 is active | `IsPortActive -Port 443` |
-| Check if port 80 is active using process name | `IsPortActive -ProcessName "httpd"` |
-| Check if port 8080 is active using process ID | `IsPortActive -ProcessId 1234` |
+| Check what ports are being used by process `httpd` | `IsPortActive -ProcessName "httpd"` |
+| Check what ports are being used by process ID `1234` | `IsPortActive -ProcessId 1234` |
