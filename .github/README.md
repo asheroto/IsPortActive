@@ -31,14 +31,14 @@ IsPortActive [-Port <int>] [-ProcessName <string>] [-ProcessId <int>] [-Version]
 
 Only one of the following parameters can be used at a time.
 
-| Parameter | Required | Description |
-| --- | --- | --- |
-| `-Port` | No | Specifies the port number to check for active connections. |
-| `-ProcessName` | No | Specifies the name of the process to check for active connections. |
-| `-ProcessId` | No | Specifies the process ID to check for active connections. |
-| `-Version` | No | Displays the version of the script. |
-| `-Help` | No | Displays the help information for the script. |
-| `-CheckForUpdate` | No | Checks for updates of the script. |
+| Parameter | Description |
+| --- | --- |
+| `-Port` | Specifies the port number to check for active connections. |
+| `-ProcessName` | Specifies the name of the process to check for active connections. |
+| `-ProcessId` | Specifies the process ID to check for active connections. |
+| `-Version` | Displays the version of the script. |
+| `-Help` | Displays the help information for the script. |
+| `-CheckForUpdate` | Checks for updates of the script. |
 
 ## Examples
 
