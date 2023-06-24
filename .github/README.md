@@ -5,8 +5,6 @@
 
 # IsPortActive
 
-## Description
-
 This script checks if a port is currently active or in use. It can check for active TCP and UDP connections on a specified port, by process name, or by process ID.
 
 ## Installing
