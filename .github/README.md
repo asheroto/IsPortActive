@@ -29,6 +29,8 @@ IsPortActive [-Port <int>] [-ProcessName <string>] [-ProcessId <int>] [-Version]
 
 ## Parameters
 
+Only one of the following parameters can be used at a time.
+
 | Parameter | Required | Description |
 | --- | --- | --- |
 | `-Port` | No | Specifies the port number to check for active connections. |
