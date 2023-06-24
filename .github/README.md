@@ -7,6 +7,8 @@
 
 This script checks if a port is currently active or in use. It can check for active TCP and UDP connections on a specified port, by process name, or by process ID.
 
+If the process name is `svchost`, the script will find the service and display name in addition to the process name.
+
 ## Installing
 
 You can either download the PS1 script from here, or install using...
