@@ -47,3 +47,14 @@ Only one of the following parameters can be used at a time.
 | Check if port 443 is active | `IsPortActive -Port 443` |
 | Check what ports are being used by process `httpd` | `IsPortActive -ProcessName "httpd"` |
 | Check what ports are being used by process ID `1234` | `IsPortActive -ProcessId 1234` |
+
+## Screenshots
+
+### Check Port
+![image](https://github.com/asheroto/IsPortActive/assets/49938263/7c0fe7c1-42fc-4514-b8e7-99b932442cd5)
+
+### Check Process Name
+![image](https://github.com/asheroto/IsPortActive/assets/49938263/2d40cd96-92eb-42c2-8e04-9cf75657c726)
+
+### Check Process ID
+![image](https://github.com/asheroto/IsPortActive/assets/49938263/547cb1e1-b10b-4389-b319-24d06e0a6048)
