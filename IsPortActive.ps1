@@ -24,6 +24,8 @@
 .DESCRIPTION
     This script checks if a port is currently active or in use. It checks for active TCP and UDP connections on a specified port, by process name, or by a process ID.
 
+	If the process name is svchost, the script will find the service and display name in addition to the process name.
+
 	Here are key switches to guide the script's behavior:
 	  -Port to specify the port number to check for active connections.
 	  -ProcessName to specify the name of the process to check for active connections.

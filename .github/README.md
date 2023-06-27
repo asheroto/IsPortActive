@@ -9,6 +9,10 @@ This script checks if a port is currently active or in use. It can check for act
 
 If the process name is `svchost`, the script will find the service and display name in addition to the process name.
 
+# Requirements
+
+- PowerShell 7+
+
 ## Installing
 
 You can either download the PS1 script from here, or install using...
