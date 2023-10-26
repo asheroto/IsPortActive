@@ -8,7 +8,7 @@ body:
 - type: markdown
   attributes:
     value: |
-      Please check to see if your feature already exists in the [Issues](https://github.com/asheroto/Chocolatey-Package-Updater).
+      Please check to see if your feature already exists in the [Issues](https://github.com/asheroto/IsPortActive).
 
       **Name your issue appropriately:** give it a sentence that reads well enough for anyone seeing this in the release notes to know what it is.
 
@@ -23,10 +23,10 @@ body:
         I have restarted my computer to confirm this is not a transitory problem.
       required: true
     - label: |
-        I have verified that I am using the latest version of Chocolatey-Package-Updater.
+        I have verified that I am using the latest version of IsPortActive.
       required: true
     - label: |
-        I have verified that this issue is NOT security related (please create [security advisory](https://github.com/asheroto/Chocolatey-Package-Updater/security/advisories) if so).
+        I have verified that this issue is NOT security related (please create [security advisory](https://github.com/asheroto/IsPortActive/security/advisories) if so).
       required: true
     - label: |
         I have run the script with the `-Debug` argument and included the output below
