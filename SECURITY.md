@@ -6,4 +6,4 @@ This project is new and only supports the latest version.
 
 ## Reporting a Vulnerability
 
-If you find a security issue, please create a [security advisory](security/advisories).
+If you find a security/vulnerability issue, please e-mail isportactive [at] asheroto [dot] com.
