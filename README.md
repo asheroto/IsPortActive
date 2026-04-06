@@ -1,4 +1,5 @@
 [![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/asheroto/IsPortActive)](https://github.com/asheroto/IsPortActive/releases)
+[![PowerShell Gallery Downloads](https://img.shields.io/powershellgallery/dt/IsPortActive?label=PowerShell%20Gallery%20downloads)](https://www.powershellgallery.com/packages/IsPortActive/1.0.0)
 [![GitHub Downloads - All Releases](https://img.shields.io/github/downloads/asheroto/IsPortActive/total)](https://github.com/asheroto/IsPortActive/releases)
 [![GitHub Sponsor](https://img.shields.io/github/sponsors/asheroto?label=Sponsor&logo=GitHub)](https://github.com/sponsors/asheroto)
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/asheroto)
