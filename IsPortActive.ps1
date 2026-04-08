@@ -1,5 +1,5 @@
 <#PSScriptInfo
-.VERSION 1.0.0
+.VERSION 1.1.0
 
 .GUID 7ec65ff2-79a3-4ff1-be3c-2dc6b6a3a3d7
 
@@ -16,6 +16,8 @@
 [Version 0.0.4] - Fix example.
 [Version 0.0.5] - Added code signing cert.
 [Version 1.0.0] - Totally refactored script. Added support for UDP ports. Added support for checking by process name and process ID. Added support for returning service/display name if it's svchost. Added -Help, -CheckForUpdate, and -Version.
+[Version 1.1.0] - Removed Get-WmiObject references, some duplicate checks, and updated to best practices.
+
 #>
 
 <#
@@ -57,7 +59,7 @@
     # Check if port 8080 is active using process ID
     IsPortActive -ProcessId 1234
 .NOTES
-    Version      : 1.0.0
+    Version      : 1.1.0
     Created by   : asheroto
 #>
 
@@ -74,7 +76,7 @@ param (
 )
 
 # Version
-$CurrentVersion = '1.0.0'
+$CurrentVersion = '1.1.0'
 $RepoOwner = 'asheroto'
 $RepoName = 'IsPortActive'
 
@@ -92,7 +94,7 @@ if ($Version.IsPresent) {
 
 # Line separator
 function LineSeparator {
-	Return ("─" * 80)
+	Return ("-" * 80)
 }
 
 # Help
@@ -113,10 +115,9 @@ function Check-GitHubRelease {
 
 		$latestVersion = $response.tag_name
 		$publishedAt = $response.published_at
-		$UtcDateTimeFormat = "MM/dd/yyyy HH:mm:ss"
 
 		# Convert UTC time string to local time
-		$UtcDateTime = [DateTime]::ParseExact($publishedAt, $UtcDateTimeFormat, $null)
+		$UtcDateTime = [DateTime]::Parse($publishedAt, [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::RoundtripKind)
 		$PublishedLocalDateTime = $UtcDateTime.ToLocalTime()
 
 		[PSCustomObject]@{
@@ -179,7 +180,7 @@ function Get-Connections {
 	$Connections = @{}
 
 	# Get all services
-	$services = Get-WmiObject -Query "SELECT * FROM Win32_Service" -ErrorAction SilentlyContinue
+	$services = Get-CimInstance -ClassName Win32_Service -ErrorAction SilentlyContinue
 
 	# Create a hashtable of service objects
 	$serviceHashtable = @{}
@@ -194,8 +195,9 @@ function Get-Connections {
 		}
 		$_.Group | ForEach-Object {
 			$OwningProcess = $_.OwningProcess
-			$ProcessName = (Get-Process -Id $OwningProcess -ErrorAction SilentlyContinue).Name
-			$Path = (Get-Process -Id $OwningProcess -ErrorAction SilentlyContinue).Path
+			$proc = Get-Process -Id $OwningProcess -ErrorAction SilentlyContinue
+			$ProcessName = $proc.Name
+			$Path = $proc.Path
 			$service = $serviceHashtable[$OwningProcess]
 
 			if ($ProcessName -eq 'svchost' -and $service) {
@@ -237,8 +239,9 @@ function Get-Connections {
 		}
 		$_.Group | ForEach-Object {
 			$OwningProcess = $_.OwningProcess
-			$ProcessName = (Get-Process -Id $OwningProcess -ErrorAction SilentlyContinue).Name
-			$Path = (Get-Process -Id $OwningProcess -ErrorAction SilentlyContinue).Path
+			$proc = Get-Process -Id $OwningProcess -ErrorAction SilentlyContinue
+			$ProcessName = $proc.Name
+			$Path = $proc.Path
 			$service = $serviceHashtable[$OwningProcess]
 
 			if ($ProcessName -eq 'svchost' -and $service) {
@@ -273,13 +276,6 @@ function Get-Connections {
 # Update note
 Write-Output "$RepoName $CurrentVersion"
 Write-Output "To check for updates, run $RepoName -CheckForUpdate`n"
-
-# Validate parameters
-if ($Port -gt 0 -and -not [string]::IsNullOrWhiteSpace($ProcessName)) {
-	Write-Error "You must specify either -Port or -ProcessName, but not both."
-	Write-Output ""
-	exit 1
-}
 
 # ProcessId is specified, ignore other parameters
 if ($ProcessId -gt 0) {

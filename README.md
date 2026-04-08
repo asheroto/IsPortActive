@@ -13,6 +13,7 @@ If the process name is `svchost`, the script will find the service and display n
 # Requirements
 
 - PowerShell 7+
+- Administrator privileges (required)
 
 ## Installing
 
