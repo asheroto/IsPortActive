@@ -1,5 +1,5 @@
 <#PSScriptInfo
-.VERSION 1.1.0
+.VERSION 1.1.1
 
 .GUID 7ec65ff2-79a3-4ff1-be3c-2dc6b6a3a3d7
 
@@ -17,6 +17,7 @@
 [Version 0.0.5] - Added code signing cert.
 [Version 1.0.0] - Totally refactored script. Added support for UDP ports. Added support for checking by process name and process ID. Added support for returning service/display name if it's svchost. Added -Help, -CheckForUpdate, and -Version.
 [Version 1.1.0] - Removed Get-WmiObject references, some duplicate checks, and updated to best practices.
+[Version 1.1.1] - Changed Write-Error to Write-Warning.
 
 #>
 
@@ -59,7 +60,7 @@
     # Check if port 8080 is active using process ID
     IsPortActive -ProcessId 1234
 .NOTES
-    Version      : 1.1.0
+    Version      : 1.1.1
     Created by   : asheroto
 #>
 
@@ -76,13 +77,13 @@ param (
 )
 
 # Version
-$CurrentVersion = '1.1.0'
+$CurrentVersion = '1.1.1'
 $RepoOwner = 'asheroto'
 $RepoName = 'IsPortActive'
 
 # Make sure that -Port, -ProcessName, or -ProcessId are not specified together
 if (($Port -and $ProcessName) -or ($Port -and $ProcessId) -or ($ProcessName -and $ProcessId)) {
-	Write-Error "You can only specify one of the following parameters: -Port, -ProcessName, or -ProcessId"
+	Write-Warning "You can only specify one of the following parameters: -Port, -ProcessName, or -ProcessId"
 	exit 1
 }
 
@@ -125,7 +126,7 @@ function Check-GitHubRelease {
 			PublishedDateTime = $PublishedLocalDateTime
 		}
 	} catch {
-		Write-Error "Unable to check for updates. Error: $_"
+		Write-Warning "Unable to check for updates. Error: $_"
 		exit 1
 	}
 }
@@ -287,8 +288,7 @@ if ($ProcessId -gt 0) {
 	} elseif (-not [string]::IsNullOrWhiteSpace($ProcessName)) {
 		$Connections = Get-Connections -ProcessName $ProcessName
 	} else {
-		Write-Error "You must specify a port number or provide a process name or process ID."
-		Write-Output ""
+		Write-Warning "You must specify a port number or provide a process name or process ID."
 		exit 1
 	}
 }
